@@ -1,121 +1,154 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taniti Travel Prototype</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taniti Travel Prototype</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <!-- Header / Navigation -->
-  <header>
-    <div class="logo">Taniti</div>
-    <nav>
-      <a href="#home" data-page="home">Home</a>
-      <a href="#accommodations" data-page="accommodations">Accommodations</a>
-      <a href="#activities" data-page="activities">Activities</a>
-      <a href="#contact" data-page="contact">Contact</a>
-      <button class="cta" data-page="booking">Book Now</button>
-    </nav>
-  </header>
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Taniti</div>
+        <nav>
+            <a href="#home" data-page="home">Home</a>
+            <a href="#accommodations" data-page="accommodations">Accommodations</a>
+            <a href="#activities" data-page="activities">Activities</a>
+            <a href="#contact" data-page="contact">Contact</a>
+            <button class="cta" data-page="booking">Book Now</button>
+        </nav>
+    </header>
 
-  <!-- Sections -->
-  <main>
-    <section id="home" class="page active">
-      <div class="hero">
-        <h1>Welcome to Taniti</h1>
-        <form class="search-bar">
-          <input type="text" placeholder="Destination">
-          <input type="text" placeholder="Dates">
-          <input type="number" placeholder="Guests">
-          <button>Search</button>
-        </form>
-      </div>
-      <h2>Featured Accommodations</h2>
-      <div class="cards">
-        <div class="card">Hotel A<span>$120/night</span></div>
-        <div class="card">Hotel B<span>$150/night</span></div>
-        <div class="card">Hotel C<span>$100/night</span></div>
-      </div>
-      <h2>Featured Activities</h2>
-      <div class="cards">
-        <div class="card">Snorkeling<span>$80</span></div>
-        <div class="card">Hiking<span>$60</span></div>
-        <div class="card">Boat Tour<span>$70</span></div>
-      </div>
-    </section>
+    <!-- Sections -->
+    <main>
+        <section id="home" class="page active">
+            <div class="hero">
+                <h1>Welcome to Taniti</h1>
+                <form class="search-bar">
+                    <input type="text" placeholder="Destination">
+                    <input type="text" placeholder="Dates">
+                    <input type="number" placeholder="Guests">
+                    <button>Search</button>
+                </form>
+            </div>
+            <h2>Featured Accommodations</h2>
+            <div class="cards">
+                <div class="card">Hotel A<span>$120/night</span></div>
+                <div class="card">Hotel B<span>$150/night</span></div>
+                <div class="card">Hotel C<span>$100/night</span></div>
+            </div>
+            <h2>Featured Activities</h2>
+            <div class="cards">
+                <div class="card">Snorkeling<span>$80</span></div>
+                <div class="card">Hiking<span>$60</span></div>
+                <div class="card">Boat Tour<span>$70</span></div>
+            </div>
+        </section>
 
-    <section id="accommodations" class="page">
-      <aside class="filters">
-        <h3>Filters</h3>
-        <label>Price Range</label>
-        <input type="range">
-        <label>Type</label>
-        <select><option>Hotel</option><option>BnB</option></select>
-        <label>Amenities</label>
-        <input type="checkbox">Family<br>
-        <input type="checkbox">Pool
-      </aside>
-      <div class="results">
-        <div class="card">Hotel A<span>$120/night</span><button>Book</button></div>
-        <div class="card">Hotel B<span>$150/night</span><button>Book</button></div>
-        <div class="card">Hotel C<span>$100/night</span><button>Book</button></div>
-      </div>
-    </section>
+        <!-- Accommodations Page -->
+        <section id="accommodations" class="page">
+            <div class="page-content">
+                <aside class="filters">
+                    <h3>Filters</h3>
+                    <label><input type="checkbox" value="Family"> Family</label>
+                    <label><input type="checkbox" value="Pool"> Pool</label>
+                </aside>
+                <div class="results" id="accommodationResults">
+                    <!-- cards cloned from homepage featured -->
+                    <div class="card hotel" data-amenities="Family,Pool" data-name="Hotel A">
+                        Hotel A<span>$120/night</span><button>Book</button>
+                    </div>
+                    <div class="card hotel" data-amenities="Pool" data-name="Hotel B">
+                        Hotel B<span>$150/night</span><button>Book</button>
+                    </div>
+                    <div class="card hotel" data-amenities="Family" data-name="Hotel C">
+                        Hotel C<span>$100/night</span><button>Book</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="activities" class="page">
-      <aside class="filters">
-        <h3>Filters</h3>
-        <label>Type</label>
-        <select><option>All</option><option>Snorkeling</option><option>Hiking</option></select>
-      </aside>
-      <div class="results">
-        <div class="card">Snorkeling<span>$80</span><button>Book</button></div>
-        <div class="card">Hiking<span>$60</span><button>Book</button></div>
-      </div>
-    </section>
+        <!-- Activities Page -->
+        <section id="activities" class="page">
+            <div class="page-content">
+                <aside class="filters">
+                    <h3>Filters</h3>
+                    <label>Activity Type</label>
+                    <select id="activityTypeFilter">
+                        <option value="All">All</option>
+                        <option value="Snorkeling">Snorkeling</option>
+                        <option value="Hiking">Hiking</option>
+                        <option value="Boat Tour">Boat Tour</option>
+                    </select>
+                </aside>
+                <div class="results" id="activityResults">
+                    <div class="card activity" data-type="Snorkeling" data-name="Snorkeling">
+                        Snorkeling<span>$80</span><button>Book</button>
+                    </div>
+                    <div class="card activity" data-type="Hiking" data-name="Hiking">
+                        Hiking<span>$60</span><button>Book</button>
+                    </div>
+                    <div class="card activity" data-type="Boat Tour" data-name="Boat Tour">
+                        Boat Tour<span>$70</span><button>Book</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="booking" class="page">
-      <nav class="breadcrumbs">Home &gt; Booking</nav>
-      <form class="booking-form">
-        <h3>Guest Info</h3>
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <h3>Dates & Guests</h3>
-        <input type="text" placeholder="Dates">
-        <input type="number" placeholder="Guests">
-        <h3>Payment Info</h3>
-        <div class="placeholder">[Payment Fields]</div>
-        <button type="submit">Confirm Booking</button>
-      </form>
-      <aside class="summary">
-        <h3>Booking Summary</h3>
-        <p>Details & Total</p>
-      </aside>
-    </section>
+        <!-- Booking Page -->
+        <section id="booking" class="page booking-page">
+            <nav class="breadcrumbs">Home &gt; Booking</nav>
+            <div class="page-content">
+                <form id="bookingForm" class="booking-form">
+                    <h3>Guest Info</h3>
+                    <input type="text" placeholder="Name" id="bookingName">
+                    <input type="email" placeholder="Email" id="bookingEmail">
+                    <h3>Dates & Guests</h3>
+                    <input type="date" id="bookingDates">
+                    <input type="number" placeholder="Guests" id="bookingGuests">
+                    <h3>Payment Info</h3>
+                    <div class="placeholder">[Payment Fields]</div>
+                    <button type="submit">Confirm Booking</button>
+                </form>
+                <aside class="summary" id="bookingSummary">
+                    <h3>Booking Summary</h3>
+                    <p>No booking yet.</p>
+                </aside>
+            </div>
+        </section>
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="page-content contact-container">
+                <div>
+                    <h2>Contact Us</h2>
+                    <form id="contactForm" class="contact-form">
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Message" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
+                    <div id="contactConfirmation" class="confirmation" style="display:none;">Thank you! We’ll get back
+                        to you soon.</div>
+                </div>
+                <div class="map-support">
+                    <div class="map">[Map]</div>
+                    <div class="support-info">
+                        <p>Phone: 123-456-7890</p>
+                        <p>Email: info@taniti.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="contact" class="page">
-      <h2>Contact Us</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Message"></textarea>
-        <button>Send</button>
-      </form>
-      <div class="map">[Map]</div>
-      <div class="support">
-        <p>Phone: 123-456-7890</p>
-        <p>Email: info@taniti.com</p>
-      </div>
-    </section>
-  </main>
+        <footer>
+            <div class="links">About | Help | Contact</div>
+            <div class="social">[Icons]</div>
+        </footer>
 
-  <footer>
-    <div class="links">About | Help | Contact</div>
-    <div class="social">[Icons]</div>
-  </footer>
-
-  <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
+
 </html>
