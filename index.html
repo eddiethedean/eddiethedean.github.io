@@ -1,0 +1,121 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taniti Travel Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="logo">Taniti</div>
+    <nav>
+      <a href="#home" data-page="home">Home</a>
+      <a href="#accommodations" data-page="accommodations">Accommodations</a>
+      <a href="#activities" data-page="activities">Activities</a>
+      <a href="#contact" data-page="contact">Contact</a>
+      <button class="cta" data-page="booking">Book Now</button>
+    </nav>
+  </header>
+
+  <!-- Sections -->
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <h1>Welcome to Taniti</h1>
+        <form class="search-bar">
+          <input type="text" placeholder="Destination">
+          <input type="text" placeholder="Dates">
+          <input type="number" placeholder="Guests">
+          <button>Search</button>
+        </form>
+      </div>
+      <h2>Featured Accommodations</h2>
+      <div class="cards">
+        <div class="card">Hotel A<span>$120/night</span></div>
+        <div class="card">Hotel B<span>$150/night</span></div>
+        <div class="card">Hotel C<span>$100/night</span></div>
+      </div>
+      <h2>Featured Activities</h2>
+      <div class="cards">
+        <div class="card">Snorkeling<span>$80</span></div>
+        <div class="card">Hiking<span>$60</span></div>
+        <div class="card">Boat Tour<span>$70</span></div>
+      </div>
+    </section>
+
+    <section id="accommodations" class="page">
+      <aside class="filters">
+        <h3>Filters</h3>
+        <label>Price Range</label>
+        <input type="range">
+        <label>Type</label>
+        <select><option>Hotel</option><option>BnB</option></select>
+        <label>Amenities</label>
+        <input type="checkbox">Family<br>
+        <input type="checkbox">Pool
+      </aside>
+      <div class="results">
+        <div class="card">Hotel A<span>$120/night</span><button>Book</button></div>
+        <div class="card">Hotel B<span>$150/night</span><button>Book</button></div>
+        <div class="card">Hotel C<span>$100/night</span><button>Book</button></div>
+      </div>
+    </section>
+
+    <section id="activities" class="page">
+      <aside class="filters">
+        <h3>Filters</h3>
+        <label>Type</label>
+        <select><option>All</option><option>Snorkeling</option><option>Hiking</option></select>
+      </aside>
+      <div class="results">
+        <div class="card">Snorkeling<span>$80</span><button>Book</button></div>
+        <div class="card">Hiking<span>$60</span><button>Book</button></div>
+      </div>
+    </section>
+
+    <section id="booking" class="page">
+      <nav class="breadcrumbs">Home &gt; Booking</nav>
+      <form class="booking-form">
+        <h3>Guest Info</h3>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <h3>Dates & Guests</h3>
+        <input type="text" placeholder="Dates">
+        <input type="number" placeholder="Guests">
+        <h3>Payment Info</h3>
+        <div class="placeholder">[Payment Fields]</div>
+        <button type="submit">Confirm Booking</button>
+      </form>
+      <aside class="summary">
+        <h3>Booking Summary</h3>
+        <p>Details & Total</p>
+      </aside>
+    </section>
+
+    <section id="contact" class="page">
+      <h2>Contact Us</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Message"></textarea>
+        <button>Send</button>
+      </form>
+      <div class="map">[Map]</div>
+      <div class="support">
+        <p>Phone: 123-456-7890</p>
+        <p>Email: info@taniti.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="links">About | Help | Contact</div>
+    <div class="social">[Icons]</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
