@@ -44,14 +44,12 @@ main { padding: 0; }
 /* Homepage / Hero */
 .home .hero {
   position: relative;
-  background: #ccc;
-  padding: 80px 20px;
   text-align: center;
 }
 .home .hero-image {
-  background: #bbb;
-  height: 300px;
   width: 100%;
+  max-height: 300px;
+  object-fit: cover;
 }
 .search-bar {
   display: flex;
@@ -63,11 +61,12 @@ main { padding: 0; }
   margin: -40px auto 0;
 }
 .search-bar input[type="text"],
-.search-bar input[type="number"] {
-  flex: 2;
-}
+.search-bar input[type="number"],
+.search-bar select,
 .search-bar input[type="date"] {
   flex: 1;
+}
+.search-bar input[type="date"] {
   max-width: 130px;
 }
 .search-bar button {
@@ -97,7 +96,18 @@ main { padding: 0; }
   text-align: center;
   position: relative;
 }
+.card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0.5rem;
+}
 .card h3 { margin: 0.5rem 0; }
+.card .details {
+  color: #555;
+  font-size: 0.9em;
+  margin: 0.25rem 0;
+}
 .card .destination { margin: 0.5rem 0; color: #555; font-style: italic; }
 .card span { display: block; margin-top: 0.5rem; }
 .card button {
@@ -145,12 +155,14 @@ main { padding: 0; }
 }
 
 /* Contact Page */
-.contact-container { display: flex; gap: 1rem; }
-.contact-form {
-  flex: 1;
+.contact-container {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  justify-content: center;      /* center the form */
+}
+.contact-form {
+  flex: 2;                       /* take up larger portion */
+  max-width: 600px;
 }
 .confirmation {
   margin-top: 1rem;

@@ -10,7 +10,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // Homepage search
-  document.getElementById('searchForm')?.addEventListener('submit', handleSearch);
+  document.getElementById('searchForm')
+    ?.addEventListener('submit', handleSearch);
 
   // Accommodation filters
   document.querySelectorAll('#accommodations .filters input[type="checkbox"]')
@@ -39,10 +40,12 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // Booking form
-  document.getElementById('bookingForm')?.addEventListener('submit', handleBookingSubmit);
+  document.getElementById('bookingForm')
+    ?.addEventListener('submit', handleBookingSubmit);
 
   // Contact form
-  document.getElementById('contactForm')?.addEventListener('submit', handleContactSubmit);
+  document.getElementById('contactForm')
+    ?.addEventListener('submit', handleContactSubmit);
 });
 
 function showPage(pageId) {
@@ -77,6 +80,10 @@ function handleSearch(e) {
     return;
   }
 
+  // pre-set the filter dropdown to the searched destination
+  const destFilter = document.getElementById('destFilterAccommodations');
+  if (destFilter) destFilter.value = dest;
+
   showPage('accommodations');
   filterAccommodationResults();
 }
@@ -85,9 +92,11 @@ function filterAccommodationResults() {
   const showFamily = document.querySelector('#accommodations input[value="Family"]')?.checked;
   const showPool = document.querySelector('#accommodations input[value="Pool"]')?.checked;
   const destSelect = document.getElementById('destFilterAccommodations');
+  // if user has chosen "All", fall back to homepage search value
+  const searchDest = document.getElementById('searchDestination').value;
   const dest = destSelect
-    ? destSelect.value
-    : document.getElementById('searchDestination').value;
+    ? (destSelect.value || searchDest)
+    : searchDest;
 
   document.querySelectorAll('#accommodations .card.hotel').forEach(card => {
     const amenities = card.dataset.amenities.split(',');
@@ -102,9 +111,10 @@ function filterActivityResults() {
   const typeSelect = document.getElementById('activityTypeFilter');
   const destSelect = document.getElementById('destFilterActivities');
   const type = typeSelect ? typeSelect.value : 'All';
+  const searchDest = document.getElementById('searchDestination').value;
   const dest = destSelect
-    ? destSelect.value
-    : document.getElementById('searchDestination').value;
+    ? (destSelect.value || searchDest)
+    : searchDest;
 
   document.querySelectorAll('#activities .card.activity').forEach(card => {
     const matchType = (type === 'All' || card.dataset.type === type);
@@ -157,7 +167,10 @@ function handleBookingSubmit(e) {
     <p><strong>Guests:</strong> ${guests}</p>
     <p><strong>Destination:</strong> ${destText}</p>
     <p><strong>Total:</strong> $${guests * 100} (est.)</p>
+    <button type="button" id="editBooking">Edit Booking</button>
   `;
+  document.getElementById('editBooking')
+    .addEventListener('click', () => showPage('booking'));
 }
 
 function handleContactSubmit(e) {
